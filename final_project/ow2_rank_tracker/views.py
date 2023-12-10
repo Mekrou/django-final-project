@@ -4,9 +4,12 @@ from .models import Player
 
 players = Player.objects.all()
 
+def rank_tracker(request):
+    return render(request, 'ow2_rank_tracker/rank_tracker.html')
+
 # Create your views here.
 def index(request):
-    populate_db_with_player_ranks()
+    #populate_db_with_player_ranks()
     return render(request, 'ow2_rank_tracker/index.html')
 
 

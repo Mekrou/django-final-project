@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ow2_rank_tracker'
+    'registration',
+    'ow2_rank_tracker',
+    'dice_game'
 ]
 
 MIDDLEWARE = [

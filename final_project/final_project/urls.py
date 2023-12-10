@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 
-from ow2_rank_tracker import views
+from ow2_rank_tracker import views as rank_tracker_views
+from dice_game import views as dice_game_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index)
+    path('', TemplateView.as_view(template_name="index.html"), name='index'),
+    path('rank_tracker/', rank_tracker_views.rank_tracker, name='rank_tracker'),
+    path('dicegame/', dice_game_views.dice_game, name="dice_game")
 ]
