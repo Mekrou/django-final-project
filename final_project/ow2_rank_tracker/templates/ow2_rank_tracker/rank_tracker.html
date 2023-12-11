@@ -8,7 +8,7 @@
   {% load rank_tags %}
   <div class="container mt-1 pt-5" style="text-align: center;">
     <p class="info-text">This data is always from the previous OW2 competitive season, due to API limitations.</p>
-    <p class="info-text">Ranks that display "unknown" are either from the user having a private profile, or they were not found.</p>
+    <p class="info-text">If user has a private profile, their ranks display as "unknown".</p>
     {% for player in players %}
       <div class="ow-rank-header">
         {{ player.nickname }}

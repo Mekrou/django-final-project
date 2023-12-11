@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .registration_manager import is_valid_battlenet, is_battlenet_in_database
 from ow2_rank_tracker.overfast_api import update_player_ranks
+from ow2_rank_tracker.overfast_api import player_found
 from django.db.utils import IntegrityError
 
 
@@ -33,6 +34,9 @@ def registration_page(request):
     print(f"Result from is_in_db..: {is_in_db}")
     if (not is_in_db):
         # add to db
+        if (not player_found(input)):
+             return render(request, 'registration/registration_page.html', {'response': 'That user could not be found. Usernames are case sensitive!'})
+
         username, id = input.split('#')
         new_player = Player(nickname=username, player_id=id)
 

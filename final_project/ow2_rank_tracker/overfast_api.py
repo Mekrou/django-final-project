@@ -70,3 +70,16 @@ def update_player_ranks(battlenet_id):
                 Player.objects.filter(player_id=battlenet_number).update(damage_rank=player_ranks[rank])
             if (rank == 'support'):
                 Player.objects.filter(player_id=battlenet_number).update(support_rank=player_ranks[rank])
+
+def player_found(battlenet_id : str):
+    battlenet_id = battlenet_id.replace('#', '-')
+    try:
+        response = requests.get(api_base_url + 'players/' + battlenet_id)
+        if response.status_code == 200:
+            return True
+        else:
+            print(f"{battlenet_id} was {response.reason}")
+            return False
+    except requests.RequestException as e:
+        print(f"Request error: {e}")
+        return False

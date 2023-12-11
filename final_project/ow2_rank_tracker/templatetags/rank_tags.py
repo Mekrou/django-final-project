@@ -8,7 +8,6 @@ def display_role(role_name, rank_tier):
     
     rank_name, rank_value = separate_division_from_tier(rank_tier)
 
-    
     role_icon = f"rank_tracker/images/{role}_role_icon.png"
     rank_image = f"/static/rank_tracker/images/{rank_name}.png"
     return {
