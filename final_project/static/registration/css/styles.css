@@ -1,3 +1,78 @@
 .test {
     color: red;
 }
+
+.error-text {
+    color: red;
+    font-size: small;
+}
+
+.info-text {
+    font-family: 'ow';
+    letter-spacing: 2px;
+    color: white;
+}
+
+.username-box {
+    background-color: #e2e3eb;
+    font-family: 'ow';
+    text-align: center;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.username-label {
+    font-family: 'ow';
+    letter-spacing: 2px;
+    color: white;
+    background-color: #505d6e;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ow-button {
+    background-color: white;
+    width: 15rem;
+    
+    font-family: 'ow';
+    color: #43484c;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 2px;
+
+    transition: transform 0.05s ease;
+}
+
+.ow-button:hover {
+    transform: scale(1.1);
+}
+
+.ow-button:active {
+    transform: scale(0.9);
+}
+
+.ow-navbar {
+    background-color: #20243c;
+    padding: 0.5em;
+}
+
+.ow-navbar-item {
+    font-family: 'ow';
+    letter-spacing: 2px;
+    color: white;
+}
+
+.ow-navbar-item:hover {
+    background-color: #20ecec;
+}
+/* background-color: #20ecec; */
+
+@font-face {
+    font-family: 'ow';
+    src: url('/static/registration/fonts/BigNoodleTooKorean.ttf') format('truetype')
+}

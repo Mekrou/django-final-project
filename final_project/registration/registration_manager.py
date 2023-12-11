@@ -46,8 +46,8 @@ def is_battlenet_in_database(input):
         # attempting to access player's nickname
         # will throw an error if it was not found
         # which is what we want.
-        player_object.first().nickname
-
+        print(player_object.first().nickname)
+        print(player_object.first().player_id)
         # no error means it is in DB
         return True
     except (AttributeError) as e:

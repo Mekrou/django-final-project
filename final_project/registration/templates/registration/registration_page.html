@@ -8,19 +8,24 @@
     
     <link rel="stylesheet" href="{% static 'registration/css/styles.css' %}">
 
-    <div class="container mt-5 pt-5 pb-5" style="border: 1px solid black; text-align: center;">
+    <div class="container mt-5 pt-5 pb-2" style="border: 1px solid black; text-align: center; background-color: #9aa4bf;">
         <div class="pb-5 info-text">
             Add your username here, and see your rank update in Rank Checker!
         </div>
         <form action="{% url 'registration_page'%}" method="post">
             {% csrf_token %}
             <div class="form-group">
-              <label for="exampleFormControlInput1">Battle.net:</label>
-              <input type="text" class="form-control-lg" name="battle.net_id" placeholder="Username#12356">
+                <label for="input_username" class="username-label">Battlenet</label>
+              <input type="text" class="username-box" name="battle.net_id" id="input_username" placeholder="Username#12356">
             </div>
+            
+            
 
-            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            <button type="submit" class="ow-button mt-5">Submit</button>
         </form>
+        <div class="error-text">
+            {{ response }}
+        </div>
     </div>
 
 {% endblock content %}
