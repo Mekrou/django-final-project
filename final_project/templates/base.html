@@ -8,7 +8,10 @@
   </head>
 
   <body>
-    <ul class="nav nav-pills nav-fill ow-navbar">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/css/styles.css' %}">
+
+    <ul class="nav nav-fill ow-navbar">
       <li class="nav-item ow-navbar-item">
         <a class="nav-link ow-navbar-item" href="{% url 'index' %}">Home</a>
       </li>

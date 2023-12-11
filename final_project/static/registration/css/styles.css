@@ -1,8 +1,10 @@
-.test {
-    color: red;
+body {
+    background-color: #9aa4bf;
 }
 
 .error-text {
+    font-family: 'ow';
+    letter-spacing: 1px;
     color: red;
     font-size: small;
 }
@@ -14,7 +16,7 @@
 }
 
 .username-box {
-    background-color: #e2e3eb;
+    background-color: #d5d4dd;
     font-family: 'ow';
     text-align: center;
     border: none;
@@ -58,19 +60,29 @@
 
 .ow-navbar {
     background-color: #20243c;
-    padding: 0.5em;
+    color: white;
+    padding: 0.2em;
 }
 
 .ow-navbar-item {
     font-family: 'ow';
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    color: white;
+    transition: transform 0s linear;
+}
+
+
+.ow-navbar-item:hover {
+    box-shadow: 0 0 0 1px #20ecec;
+    /* border: 1px solid #20ecec; */
+    border-radius: 1px;
+    background-color: #205c64;
     color: white;
 }
 
-.ow-navbar-item:hover {
-    background-color: #20ecec;
+.ow-navbar-item:visited {
+    color: white;
 }
-/* background-color: #20ecec; */
 
 @font-face {
     font-family: 'ow';

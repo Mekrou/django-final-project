@@ -11,7 +11,6 @@ def registration_page(request):
     # First case is that there was no input
     if (input == "" or input == None):
         print("User did not enter anything!")
-        # TODO: SEND SIGNAL TO TEMPLATE TO INSTRUCT USER!
         return render(request, 'registration/registration_page.html', {'response': 'Enter a username!'})
     
     # Second case is that their input does not resemble a valid battletag
@@ -28,11 +27,13 @@ def registration_page(request):
         # add to db
         username, id = input.split('#')
         new_player = Player(nickname=username, player_id=id)
+
+        # The below check is if a battle.net ID exists in our DB, but username
+        # was unique. This can happen when case in the name is different
         try:
             new_player.save()
         except IntegrityError as e:
             return render(request, 'registration/registration_page.html', {'response': 'That battle.net ID is already being tracked!'})
         return render(request, 'registration/registration_page.html', {'response': 'User successfully added!'})
     else:
-        # TODO: SEND SIGNAL TO TEMPLATE TO INSTRUCT USER!
         return render(request, 'registration/registration_page.html', {'response': 'That user is already being tracked!'})
