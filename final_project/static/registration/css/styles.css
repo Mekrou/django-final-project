@@ -84,6 +84,24 @@ body {
     color: white;
 }
 
+/* rank_tracker.html styles */
+.ow-rank-header {
+    font-family: 'ow';
+    font-style: oblique;
+    color: white;
+    background-color: #20243c;
+    border-radius: 2px;
+    margin: 5px 5px 0px 0px;
+}
+
+.ow-rank-display {
+    font-style: normal;
+    background-color: #323e5e;
+    letter-spacing: 1px;
+    border-radius: 2px;
+}
+
+
 @font-face {
     font-family: 'ow';
     src: url('/static/registration/fonts/BigNoodleTooKorean.ttf') format('truetype')

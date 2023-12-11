@@ -1,31 +1,24 @@
-{% extends "base.html" %}
-    
+{% extends 'base.html' %}
 
-
+{% block title %}
+  Track Account
+{% endblock %}
 
 {% block content %}
-    {% load static %}
-    
-    <link rel="stylesheet" href="{% static 'registration/css/styles.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'registration/css/styles.css' %}" />
 
-    <div class="container mt-5 pt-5 pb-2" style="text-align: center; background-color: #9aa4bf;">
-        <div class="pb-5 info-text">
-            Add your username here, and see your rank update in Rank Checker!
-        </div>
-        <form action="{% url 'registration_page'%}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="input_username" class="username-label">Battlenet</label>
-              <input type="text" class="username-box" name="battle.net_id" id="input_username" placeholder="Username#12356">
-            </div>
-            
-            
-
-            <button type="submit" class="ow-button mt-5">Submit</button>
-        </form>
-        <div class="pt-2 error-text">
-            {{ response }}
-        </div>
-    </div>
-
-{% endblock content %}
+  <div class="container mt-5 pt-5 pb-2" style="text-align: center; background-color: #9aa4bf;">
+    <div class="pb-5 info-text">Add your friends here, and compare ranks in rank checker!</div>
+    <form action="{% url 'registration_page' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="input_username" class="username-label">Battlenet</label>
+        <input type="text" class="username-box" name="battle.net_id" id="input_username" placeholder="Username#12356" />
+        <input type="hidden" name="submit-button" value="submit_was_clicked" />
+      </div>
+      <button type="submit" class="ow-button mt-5">Submit</button>
+    </form>
+    <div class="pt-2 error-text">{{ response }}</div>
+  </div>
+{% endblock %}

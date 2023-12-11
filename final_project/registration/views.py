@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .registration_manager import is_valid_battlenet, is_battlenet_in_database
+from ow2_rank_tracker.overfast_api import update_player_ranks
 from django.db.utils import IntegrityError
 
 
@@ -7,6 +8,13 @@ from ow2_rank_tracker.models import Player
 # Create your views here.
 def registration_page(request):
     input = request.POST.get('battle.net_id')
+    submit_button = request.POST.get('submit-button')
+
+    # This is to prevent prompting "Enter a username"
+    # upon a user's initial visit.
+    # We only want to display feedback if they click the submit button
+    if (submit_button != "submit_was_clicked"):
+            return render(request, 'registration/registration_page.html')
 
     # First case is that there was no input
     if (input == "" or input == None):
@@ -30,10 +38,14 @@ def registration_page(request):
 
         # The below check is if a battle.net ID exists in our DB, but username
         # was unique. This can happen when case in the name is different
+        # IntegrityError gets raised because our ID is marked as unique in our model, as it should be!
         try:
             new_player.save()
         except IntegrityError as e:
             return render(request, 'registration/registration_page.html', {'response': 'That battle.net ID is already being tracked!'})
+        
+        # update their rank data in database
+        update_player_ranks(input)
         return render(request, 'registration/registration_page.html', {'response': 'User successfully added!'})
     else:
         return render(request, 'registration/registration_page.html', {'response': 'That user is already being tracked!'})

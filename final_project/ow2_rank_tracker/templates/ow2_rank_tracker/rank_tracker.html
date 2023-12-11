@@ -1,7 +1,33 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Rank Tracker{% endblock title %}
+
 
 {% block content %}
+  {% load static %}
+  {% load rank_tags %}
+  <div class="container mt-1 pt-5" style="text-align: center;">
+    <p class="info-text">This data is always from the previous OW2 competitive season, due to API limitations.</p>
+    <p class="info-text">Ranks that display "unknown" are either from the user having a private profile, or they were not found.</p>
+    {% for player in players %}
+      <div class="ow-rank-header">
+        {{ player.nickname }}
+        <div class="ow-rank-display">
+          {% display_role 'Tank' player.tank_rank %}
+          {% display_role 'Damage' player.damage_rank %}
+          {% display_role 'Support' player.support_rank %}
+        </div>
+      </div>
+    {% endfor %}
 
-    This is the OW2 Rank tracker page!
-
-{% endblock content %}
+    {% if num_players == 0 %}
+      <a class="error-text" href="{% url 'registration_page' %}">No accounts to display. Click here to add some!</a>
+    {% else %}
+      <form action="{% url 'rank_tracker' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="update_rank_info" value="update_ranks" />
+        <button type="submit" class="ow-button mt-5">Update Rank Information</button>
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}

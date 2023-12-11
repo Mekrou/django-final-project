@@ -1,0 +1,11 @@
+{% load static %}
+<div style="display: flex; justify-content: center;">
+    <div class="mx-5">
+      <img src="{% static role_icon %}" alt="" style="width: 1.5rem; height: 1.5rem;" />
+      {{ role_name }}
+    </div>
+    <div class="mx-5">
+      <img src="{{ rank_image }}" alt="" style="display: inline; width: 1.5rem; height: 1.5rem;" />
+      {{ rank_name }} {{ rank_value }}
+    </div>
+  </div>
