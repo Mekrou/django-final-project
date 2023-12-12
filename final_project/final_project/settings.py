@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'registration',
     'ow2_rank_tracker',
-    'dice_game'
+    'map_picker'
 ]
 
 MIDDLEWARE = [

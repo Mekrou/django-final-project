@@ -21,13 +21,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from ow2_rank_tracker import views as rank_tracker_views
-from dice_game import views as dice_game_views
 from registration import views as reg_views
+from map_picker import views as mp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html"), name='index'),
     path('registration/', reg_views.registration_page, name="registration_page"),
     path('rank_tracker/', rank_tracker_views.rank_tracker, name='rank_tracker'),
-    path('dicegame/', dice_game_views.dice_game, name="dice_game"),
+    path('map_picker/', mp_views.map_picker, name="map_picker"),
 ]
