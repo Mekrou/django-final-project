@@ -83,3 +83,6 @@ def player_found(battlenet_id : str):
     except requests.RequestException as e:
         print(f"Request error: {e}")
         return False
+    
+def get_list_of_gamemodes():
+    print('implement')
