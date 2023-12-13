@@ -1,10 +1,65 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Map Picker{% endblock title %}
+{% block title %}
+  Map Picker
+{% endblock %}
 
 {% block content %}
-Generate maps here!
+  <div class="container-fluid mt-1 pt-5" style="text-align: center;">
+    <div class="row">
+        <p class="info-text">Select the gamemode you want to play and roll a map at random!</p>
 
-{% endblock content %}
+        <form action="{% url 'map_picker' %}" method="post">
+          {% csrf_token %}
+          <div class="dropdown" style="text-align: center;">
+            <button class="btn dropdown-toggle ow-gamemode-picker" type="button" id="gamemode-select" data-bs-toggle="dropdown">Select Gamemode</button>
+            <ul class="dropdown-menu ow" id="ow-dropdown-menu">
+              {% for gamemode in gamemodes %}
+                <li>
+                  <a class="dropdown-item ow" data-value="{{ gamemode }}">{{ gamemode }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
 
+          <input type="hidden" name="selected_gamemode" id="selected_gamemode" value="" />
+          <input type="hidden" name="map_picker_btn" value="clicked" />
+          <button type="submit" class="ow-button mt-5">Pick Map</button>
+        </form>
 
+        {% if gamemode_picked %}
+          {% load map_tags %}
+          {% display_map gamemode_picked %}
+        {% endif %}
+    </div>
+        
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var dropdownButton = document.getElementById('gamemode-select')
+      var dropdownItems = document.querySelectorAll('.dropdown-item')
+      var selected_gamemode = document.getElementById('selected_gamemode')
+    
+      var dropdown_menu = document.getElementById('ow-dropdown-menu')
+    
+      var prev_selected = null
+      dropdown_menu.style.width = dropdownButton.style.width
+      dropdownItems.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          event.preventDefault()
+          var selectedValue = this.getAttribute('data-value')
+          dropdownButton.innerText = selectedValue
+          item.setAttribute('class', 'dropdown-item ow selected')
+    
+          if (prev_selected != null && prev_selected != item) {
+            prev_selected.setAttribute('class', 'dropdown-item ow')
+          }
+    
+          selected_gamemode.setAttribute('value', selectedValue)
+          prev_selected = item
+        })
+      })
+    })
+  </script>
+{% endblock %}

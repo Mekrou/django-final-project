@@ -84,5 +84,51 @@ def player_found(battlenet_id : str):
         print(f"Request error: {e}")
         return False
     
-def get_list_of_gamemodes():
-    print('implement')
+# Returns a list of valid gamemode names for OW2.
+def get_gamemode_names():
+    try:
+        response = requests.get(f"{api_base_url}/gamemodes")
+        if (response.status_code == 200):
+            # returns a list of "gamemode" objects
+            gamemodes = response.json()
+
+            names = []
+            for gamemode in gamemodes:
+                names.append(gamemode['name'])
+
+            return names
+    except Exception as e:
+        print(f"Exception: {e}")
+
+# API expects name with specific parameters (spaces are '-')
+# and chars are all lowercase
+def get_gamemode_key(gamemode_name):
+    key = gamemode_name.lower()
+    key = key.replace(' ', '-')
+    return key
+
+class MapData:
+    name = None
+    image = None
+
+    def __init__(self, name, image):
+        self.name = name
+        self.image = image
+
+    def __str__(self):
+        return f"{self.name}\n{self.image}"
+    
+def create_map_objects(maps):
+    _maps = []
+    for map in maps:
+        _maps.append(MapData(map['name'], map['screenshot']))
+    return _maps
+
+def filter_maps_from_gamemode(gamemode_key):
+    try:
+        response = requests.get(f"{api_base_url}/maps", params={ 'gamemode': gamemode_key})
+        if (response.status_code == 200):
+            data = response.json()
+            return create_map_objects(data)
+    except Exception as e:
+        print(f"Exception: {e}")

@@ -6,43 +6,46 @@ body {
     font-family: 'ow';
     letter-spacing: 1px;
     color: red;
-    font-size: small;
+    font-size: xx-large;
 }
 
 .info-text {
     font-family: 'ow';
     letter-spacing: 2px;
+    font-size: xx-large;
     color: white;
 }
 
 .username-box {
     background-color: #d5d4dd;
     font-family: 'ow';
+    font-size: xx-large;
     text-align: center;
     border: none;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 1rem 2rem 1rem 2rem;
     letter-spacing: 2px;
     color: white;
 }
 
 .username-label {
     font-family: 'ow';
+    font-size: xx-large;
     letter-spacing: 2px;
     color: white;
     background-color: #505d6e;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .ow-button {
     background-color: white;
-    width: 15rem;
+    width: 30rem;
     
     font-family: 'ow';
-    color: #43484c;
+    font-size: xx-large;
+    color: #20243c;
     letter-spacing: 2px;
     border: none;
     border-radius: 2px;
@@ -67,6 +70,7 @@ body {
 .ow-navbar-item {
     font-family: 'ow';
     letter-spacing: 1px;
+    font-size: xx-large;
     color: white;
     transition: transform 0s linear;
 }
@@ -74,7 +78,6 @@ body {
 
 .ow-navbar-item:hover {
     box-shadow: 0 0 0 1px #20ecec;
-    /* border: 1px solid #20ecec; */
     border-radius: 1px;
     background-color: #205c64;
     color: white;
@@ -87,6 +90,7 @@ body {
 /* rank_tracker.html styles */
 .ow-rank-header {
     font-family: 'ow';
+    font-size: xx-large;
     font-style: oblique;
     color: white;
     background-color: #20243c;
@@ -101,6 +105,64 @@ body {
     border-radius: 2px;
 }
 
+/* Map Picker styles */
+.btn.dropdown-toggle.ow-gamemode-picker {
+    background-color: white;
+    font-family: 'ow';
+    font-size: xx-large;
+    width: 35rem;
+    
+    text-align: start;
+
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    border: none;
+    border-radius: 1px;
+    letter-spacing: 1px;
+    color: #20243c;
+}
+
+.dropdown-item.ow {
+    border-radius: 2px;
+    transform: scaleX(0.98);
+
+    font-family: 'ow';
+    font-size: xx-large;
+    letter-spacing: 1px;
+    text-align: start;
+    
+    border: none;
+    color: #20243c;
+}
+
+.dropdown-item.ow:hover {
+    background-color: #d0cccc;
+}
+
+.dropdown-menu.ow {
+    border-radius: 1px;
+
+    width: 35rem;
+}
+
+.dropdown-item.ow.selected {
+    background-color: #20243c;
+    color: white;
+    transition: all 0.1s ease;
+}
+
+.dropdown-item.ow.selected:hover {
+    border: -2px solid #20ecec;
+    border-radius: -2px;
+    background-color: #205c64;
+}
+
+@media (min-width: 768px) {
+    .mx-lg-12 {
+      margin-left: 12rem;
+      margin-right: 12rem;
+    }
+}
 
 @font-face {
     font-family: 'ow';

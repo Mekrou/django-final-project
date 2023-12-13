@@ -1,7 +1,11 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-    Hey, I'll tell you about my apps here!
-{% endblock content %}
-
-
+  <div class="container mt-1 pt-5" style="text-align: center;">
+    <p class="info-text">
+      I created three applications relating to the online multiplayer game <a href="https://overwatch.blizzard.com/en-us/" style="color: #e8641c;">Overwatch 2.</a>
+      You can add PC accounts at <a href="{% url 'registration_page' %}" style="color: #e8641c;">registration</a>, and view their ranks at <a href="{% url 'rank_tracker' %}" style="color: #e8641c;">Rank Tracker</a>.
+      <a href="{% url 'map_picker' %}" style="color: #e8641c;">Map Picker</a> was made for custom game lobbies to randomly pick a map for indecisive teams. All data is retrieved from <a href="https://overfast-api.tekrop.fr/" style="color: #e8641c;">overfast api</a>, which scrapes data off of Blizzard's website, since Overwatch 2 has no official API at the moment. I've left some of my friends and I's battle.net account names in case you do not have any to test.
+    </p>
+  </div>
+{% endblock %}
